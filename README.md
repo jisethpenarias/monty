@@ -1,4 +1,4 @@
-
+![Monty](https://user-images.githubusercontent.com/66282703/93286043-dabc8180-f79b-11ea-9054-900fbb588090.jpg)
 
 # 0x19. C - Stacks, Queues - LIFO, FIFO
 
