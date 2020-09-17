@@ -26,3 +26,23 @@ void _pop(stack_t **top, unsigned int num_line)
 	*top = aux;
 	aux->prev = ((*top)->prev = NULL);
 }
+/**
+ * _add - add the top 2 elements from the top
+ * @top: Double pointer stack.
+ * @num_line: line number.
+ * Return: void.
+ */
+
+void _add(stack_t **top, unsigned int num_line)
+{
+	stack_t *aux = *top;
+
+	if (*top == NULL || (*top)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", num_line);
+		exit(EXIT_FAILURE);
+	}
+	aux->next->n += (*top)->n;
+	(*top) = (*top)->next;
+	(*top)->prev = NULL;
+}
