@@ -7,7 +7,7 @@
  * Return: void.
  */
 
-void (*st_opcode(char *str, unsigned int nl)) (stack_tt **stack, unsigned int)
+void (*st_opcode(char *str, unsigned int nl)) (stack_t **stack, unsigned int)
 {
 	int i = 0;
 	instruction_t instruct_opcode[] = {

@@ -8,11 +8,10 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <sys/wait.h>
 #include <ctype.h>
 
 /**
- * struct stack_ss - doubly linked list representation of a stack (or queue)
+ * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
  * @next: points to the next element of the stack (or queue)
@@ -21,12 +20,12 @@
  * for stack, queues, LIFO, FIFO Holberton project
  */
 
-typedef struct stack_ss
+typedef struct stack_s
 {
 	int n;
-	struct stack_ss *prev;
-	struct stack_ss *next;
-} stack_tt;
+	struct stack_s *prev;
+	struct stack_s *next;
+} stack_t;
 
 /**
  * struct instruction_s - opcode and its function
@@ -40,7 +39,7 @@ typedef struct stack_ss
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_tt **stack, unsigned int line_number);
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 extern int number;
@@ -48,11 +47,11 @@ int number;
 
 void exec_opcode_monty(char **argv);
 void tokenizer(char *entry, char **eachString);
-void (*st_opcode(char *str, unsigned int nl)) (stack_tt **stack, unsigned int);
-void _push(stack_tt **stack, unsigned int line_number);
-void _nop(stack_tt **stack, unsigned int line_number);
-void _pall(stack_tt **stack, unsigned int num_line);
-void _free_stack(stack_tt *top);
+void (*st_opcode(char *str, unsigned int nl)) (stack_t **stack, unsigned int);
+void _push(stack_t **stack, unsigned int line_number);
+void _nop(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int num_line);
+void _free_stack(stack_t *top);
 
 void error_arg(void);
 void error_open(char **argv);
