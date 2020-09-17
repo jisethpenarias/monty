@@ -22,22 +22,6 @@ int have_space(char *line)
 }
 
 /**
- * build_node - build_node
- * @top: value of each argument.
- * @n: value.
- * Return: void
- */
-
-void build_node(stack_t **top, int n)
-{
-	*top = (stack_t *)malloc(sizeof(stack_t));
-	if (!(*top))
-		error_malloc();
-
-	(*top)->n = n;
-}
-
-/**
  * exec_opcode_monty - opcode execution.
  * @argv: value of each argument.
  * Return: void
@@ -62,9 +46,8 @@ void exec_opcode_monty(char **argv)
 		if (rd >= 1 && have_space(line))
 		{
 			tokenizer(line, eachString);
+			number = atoi(eachString[1]);
 			funct = struct_opcode(eachString[0]);
-			if (strcmp(eachString[0], "push") == 0)
-				build_node(&top, atoi(eachString[1]));
 			funct(&top, num_line);
 			num_line++;
 		}

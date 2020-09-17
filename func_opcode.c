@@ -1,5 +1,7 @@
 #include "monty.h"
 
+int number;
+
 /**
  * _push - pushes an element to the stack.
  * @top: Double pointer.
@@ -12,20 +14,21 @@ void _push(stack_t **top, unsigned int num_line)
 	stack_t *auxNode;
 	(void)num_line;
 
-	if (stack == NULL)
+	auxNode = malloc(sizeof(stack_t));
+	if (!auxNode)
+		error_malloc();
+	auxNode->n = number;
+	auxNode->prev = NULL;
+	if (*top == NULL)
 	{
-		(*top)->prev = NULL;
-		stack = *top;
+		auxNode->next = NULL;
+		*top = auxNode;
 	}
 	else
 	{
-		auxNode = stack;
-		while (auxNode->next != NULL)
-		{
-			auxNode = auxNode->next;
-		}
 		auxNode->next = *top;
 		(*top)->prev = auxNode;
+		*top = auxNode;
 	}
 }
 
@@ -58,6 +61,6 @@ void _pall(stack_t **stack, unsigned int num_line)
 	while (auxNode != NULL)
 	{
 		printf("%d\n", (auxNode)->n);
-		(auxNode) = (auxNode)->prev;
+		(auxNode) = (auxNode)->next;
 	}
 }
