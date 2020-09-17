@@ -16,6 +16,7 @@ void (*st_opcode(char *str, unsigned int nl)) (stack_t **stack, unsigned int)
 		{"pint", _pint},
 		{"pop", _pop},
 		{"nop", _nop},
+		{"swap", _swap},
 		{"add", _add},
 		{NULL, NULL}
 	};

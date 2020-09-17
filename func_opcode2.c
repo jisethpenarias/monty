@@ -55,3 +55,27 @@ void _add(stack_t **top, unsigned int num_line)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * _swap - removes the top element of the stack.
+ * @top: Double pointer stack.
+ * @num_line: line number.
+ * Return: void.
+ */
+
+void _swap(stack_t **top, unsigned int num_line)
+{
+	stack_t *aux = *top;
+
+	if (*top == NULL || (*top)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", num_line);
+		exit(EXIT_FAILURE);
+	}
+	aux = (*top)->next;
+	(*top)->prev = aux;
+	aux->prev = NULL;
+	(*top)->next = aux->next;
+	aux->next = *top;
+	*top = aux;
+}

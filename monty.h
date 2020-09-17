@@ -54,6 +54,7 @@ void _pall(stack_t **stack, unsigned int num_line);
 void _pint(stack_t **top, unsigned int num_line);
 void _pop(stack_t **top, unsigned int num_line);
 void _add(stack_t **top, unsigned int num_line);
+void _swap(stack_t **top, unsigned int num_line);
 void _free_stack(stack_t *top);
 
 void error_arg(void);
