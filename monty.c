@@ -89,4 +89,7 @@ void exec_opcode_monty(char **argv)
 		num_line++;
 	}
 	fclose(fd);
+	if (line != NULL)
+		free(line);
+	_free_stack(top);
 }

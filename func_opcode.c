@@ -64,3 +64,24 @@ void _pall(stack_t **stack, unsigned int num_line)
 		(auxNode) = (auxNode)->next;
 	}
 }
+
+/**
+ * _free_stack - free the stack
+ * @top: Double pointer
+ * Return: void.
+ */
+void _free_stack(stack_t *top)
+{
+	stack_t *temp;
+
+	if (top == NULL)
+		return;
+
+	while (top != NULL)
+	{
+		temp = top;
+		top = top->next;
+		free(temp);
+	}
+	free(top);
+}
