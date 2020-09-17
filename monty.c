@@ -1,5 +1,4 @@
 #include "monty.h"
-int number;
 
 /**
  *have_space - this function validates characters other than spacesh.
@@ -57,8 +56,8 @@ void exec_opcode_monty(char **argv)
 	char *line = NULL, *eachString[2], auxToken[1000];
 	unsigned int num_line = 1;
 	int rd = 0;
-	void (*funct)(stack_t **stack, unsigned int num_line);
-	stack_t *top = NULL;
+	void (*funct)(stack_tt **stack, unsigned int num_line);
+	stack_tt *top = NULL;
 	size_t len;
 
 	fd = fopen(argv[1], "r");

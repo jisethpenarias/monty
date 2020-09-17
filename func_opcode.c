@@ -9,12 +9,12 @@ int number;
  * Return: void.
  */
 
-void _push(stack_t **top, unsigned int num_line)
+void _push(stack_tt **top, unsigned int num_line)
 {
-	stack_t *auxNode;
+	stack_tt *auxNode;
 	(void)num_line;
 
-	auxNode = malloc(sizeof(stack_t));
+	auxNode = malloc(sizeof(stack_tt));
 	if (!auxNode)
 		error_malloc();
 	auxNode->n = number;
@@ -39,7 +39,7 @@ void _push(stack_t **top, unsigned int num_line)
  * Return: void.
  */
 
-void _nop(stack_t **stack, unsigned int num_line)
+void _nop(stack_tt **stack, unsigned int num_line)
 {
 	(void)stack;
 	(void)num_line;
@@ -52,9 +52,9 @@ void _nop(stack_t **stack, unsigned int num_line)
  * Return: void.
  */
 
-void _pall(stack_t **stack, unsigned int num_line)
+void _pall(stack_tt **stack, unsigned int num_line)
 {
-	stack_t *auxNode;
+	stack_tt *auxNode;
 	(void)num_line;
 
 	auxNode = *stack;
@@ -70,9 +70,9 @@ void _pall(stack_t **stack, unsigned int num_line)
  * @top: Double pointer
  * Return: void.
  */
-void _free_stack(stack_t *top)
+void _free_stack(stack_tt *top)
 {
-	stack_t *temp;
+	stack_tt *temp;
 
 	if (top == NULL)
 		return;
