@@ -60,7 +60,7 @@ void _pall(stack_t **stack, unsigned int num_line)
 	auxNode = *stack;
 	while (auxNode != NULL)
 	{
-		printf("%d\n", (auxNode)->n);
+		fprintf(stdout, "%d\n", (auxNode)->n);
 		(auxNode) = (auxNode)->next;
 	}
 }

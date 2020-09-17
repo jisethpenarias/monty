@@ -47,14 +47,14 @@ typedef struct instruction_s
 
 void exec_opcode_monty(char **argv);
 void tokenizer(char *entry, char **eachString);
-void (*struct_opcode(char *str))(stack_t **stack, unsigned int);
+void (*st_opcode(char *str, unsigned int nl)) (stack_t **stack, unsigned int);
 void _push(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int num_line);
 
 void error_arg(void);
 void error_open(char **argv);
-void error_instruction(char *instruction, unsigned int line);
+void error_instruction(char *opfunct, unsigned int line);
 void error_malloc(void);
 void free_dpointer(char **command);
 
