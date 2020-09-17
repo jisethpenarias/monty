@@ -26,14 +26,14 @@ void error_open(char **argv)
 
 /**
  * error_instruction - file contains an invalid statement, print error message
- * @instruction: opcode and its function.
+ * @opfunct: opcode and its function.
  * @line: line in file.
  * Return: void
  */
 
-void error_instruction(char *instruction, unsigned int line)
+void error_instruction(char *opfunct, unsigned int line)
 {
-	fprintf(stderr, "L%u: unknown instruction %s\n", line, instruction);
+	fprintf(stderr, "L%u: unknown instruction %s\n", line, opfunct);
 	exit(EXIT_FAILURE);
 }
 

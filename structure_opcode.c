@@ -1,12 +1,13 @@
 #include "monty.h"
 
 /**
- * struct_opcode - structure that has the function that is implemented.
+ * st_opcode - structure that has the function that is implemented.
  * @str: opcode name.
+ * @nl: line number.
  * Return: void.
  */
 
-void (*struct_opcode(char *str)) (stack_t **stack, unsigned int)
+void (*st_opcode(char *str, unsigned int nl)) (stack_t **stack, unsigned int)
 {
 	int i = 0;
 	instruction_t instruct_opcode[] = {
@@ -23,5 +24,6 @@ void (*struct_opcode(char *str)) (stack_t **stack, unsigned int)
 		}
 		i++;
 	}
+	error_instruction(str, nl);
 	return (NULL);
 }
