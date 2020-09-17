@@ -74,8 +74,8 @@ void _swap(stack_t **top, unsigned int num_line)
 	}
 	aux = (*top)->next;
 	(*top)->prev = aux;
-	aux->prev = NULL;
 	(*top)->next = aux->next;
+	aux->prev = NULL;
 	aux->next = *top;
 	*top = aux;
 }
