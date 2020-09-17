@@ -31,16 +31,30 @@ void _push(stack_t **top, unsigned int num_line)
 }
 
 /**
- * _nop - opcode nop doesn’t do anything.
- * @stack: Double pointer
+ * _pop - removes the top element of the stack.
+ * @top: Double pointer stack.
  * @num_line: line number.
  * Return: void.
  */
 
-void _nop(stack_t **stack, unsigned int num_line)
+void _pop(stack_t **top, unsigned int num_line)
 {
-	(void)stack;
-	(void)num_line;
+	stack_t *aux;
+
+	if (!*top)
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", num_line);
+		exit(EXIT_FAILURE);
+	}
+	if (!((*top)->next))
+	{
+		free(*top);
+		*top = NULL;
+		return;
+	}
+	aux = (*top)->next;
+	*top = aux;
+	aux->prev = ((*top)->prev = NULL);
 }
 
 /**
@@ -64,25 +78,27 @@ void _pall(stack_t **stack, unsigned int num_line)
 }
 
 /**
- * _free_stack - free the stack
- * @top: Double pointer
+ * _swap - removes the top element of the stack.
+ * @top: Double pointer stack.
+ * @num_line: line number.
  * Return: void.
  */
 
-void _free_stack(stack_t *top)
+void _swap(stack_t **top, unsigned int num_line)
 {
-	stack_t *aux;
+	stack_t *aux = *top;
 
-	if (top == NULL)
-		return;
-
-	while (top != NULL)
+	if (*top == NULL || (*top)->next == NULL)
 	{
-		aux = top;
-		top = top->next;
-		free(aux);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", num_line);
+		exit(EXIT_FAILURE);
 	}
-	free(top);
+	aux = (*top)->next;
+	(*top)->prev = aux;
+	(*top)->next = aux->next;
+	aux->prev = NULL;
+	aux->next = *top;
+	*top = aux;
 }
 
 /**
