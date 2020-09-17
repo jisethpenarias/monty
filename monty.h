@@ -21,14 +21,14 @@
  * for stack, queues, LIFO, FIFO Holberton project
  */
 
-typedef struct stack_st
+typedef struct stack_s
 {
-        int n;
-        struct stack_st *prev;
-        struct stack_st *next;
-} stack_tt;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
+} stack_t;
 
-extern stack_tt *stack;
+extern stack_t *stack;
 
 /**
  * struct instruction_s - opcode and its function
@@ -41,16 +41,16 @@ extern stack_tt *stack;
 
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_tt **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 void exec_opcode_monty(char **argv);
 void tokenizer(char *entry, char **eachString);
-void (*get_struct_opcode(char *str))(stack_tt **stack, unsigned int line_number);
-void _push(stack_tt **stack, unsigned int line_number);
-void _nop(stack_tt **stack, unsigned int line_number);
-void _pall(stack_tt **stack, unsigned int num_line);
+void (*struct_opcode(char *str))(stack_t **stack, unsigned int);
+void _push(stack_t **stack, unsigned int line_number);
+void _nop(stack_t **stack, unsigned int line_number);
+void _pall(stack_t **stack, unsigned int num_line);
 
 void error_arg(void);
 void error_open(char **argv);

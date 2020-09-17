@@ -1,9 +1,8 @@
 #include "monty.h"
 
 /**
- * error_arg - If the user does not give any file or more than one argument the error is printed
+ * error_arg - If the user dosent give any file.
  * @void: void
- * 
  * Return: void
  */
 
@@ -16,7 +15,6 @@ void error_arg(void)
 /**
  * error_open - if the file cannot be opened, the error message is printed
  * @argv: value of each argument.
- * 
  * Return: void
  */
 
@@ -27,8 +25,8 @@ void error_open(char **argv)
 }
 
 /**
- * error_instruction - If the file contains an invalid statement, print the error message
- * @instruction: 
+ * error_instruction - file contains an invalid statement, print error message
+ * @instruction: opcode and its function.
  * @line: line in file.
  * Return: void
  */
@@ -40,8 +38,7 @@ void error_instruction(char *instruction, unsigned int line)
 }
 
 /**
- * error_malloc - If the file contains an invalid statement, print the error message
- * 
+ * error_malloc - if malloc fails, print error message
  * Return: void
  */
 
