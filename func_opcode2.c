@@ -42,7 +42,16 @@ void _add(stack_t **top, unsigned int num_line)
 		fprintf(stderr, "L%u: can't add, stack too short\n", num_line);
 		exit(EXIT_FAILURE);
 	}
-	aux->next->n += (*top)->n;
-	(*top) = (*top)->next;
-	(*top)->prev = NULL;
+	if (aux->next)
+	{
+		aux->next->n += (*top)->n;
+		(*top) = (*top)->next;
+		(*top)->prev = NULL;
+		free(aux);
+	}
+	else
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", num_line);
+		exit(EXIT_FAILURE);
+	}
 }
