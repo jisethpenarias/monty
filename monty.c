@@ -34,6 +34,8 @@ void validate_number(char *number, unsigned int num_line)
 	len = strlen(number);
 	for (i = 0; i < len; i++)
 	{
+		if (number[i] == '-')
+			continue;
 		if (!isdigit(number[i]))
 			break;
 	}
