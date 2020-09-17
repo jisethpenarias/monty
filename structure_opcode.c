@@ -13,6 +13,8 @@ void (*st_opcode(char *str, unsigned int nl)) (stack_t **stack, unsigned int)
 	instruction_t instruct_opcode[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"pint", _pint},
+		{"pop", _pop},
 		{"nop", _nop},
 		{NULL, NULL}
 	};

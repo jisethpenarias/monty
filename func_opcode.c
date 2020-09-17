@@ -68,18 +68,39 @@ void _pall(stack_t **stack, unsigned int num_line)
  * @top: Double pointer
  * Return: void.
  */
+
 void _free_stack(stack_t *top)
 {
-	stack_t *temp;
+	stack_t *aux;
 
 	if (top == NULL)
 		return;
 
 	while (top != NULL)
 	{
-		temp = top;
+		aux = top;
 		top = top->next;
-		free(temp);
+		free(aux);
 	}
 	free(top);
+}
+
+/**
+ * _pint - prints the value at the top of the stack.
+ * @top: Double pointer
+ * @num_line: line number.
+ * Return: void.
+ */
+
+void _pint(stack_t **top, unsigned int num_line)
+{
+	stack_t *aux = *top;
+
+	if (aux)
+		fprintf(stdout, "%d\n", aux->n);
+	else
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", num_line);
+		exit(EXIT_FAILURE);
+	}
 }

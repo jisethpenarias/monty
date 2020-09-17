@@ -51,6 +51,8 @@ void (*st_opcode(char *str, unsigned int nl)) (stack_t **stack, unsigned int);
 void _push(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int num_line);
+void _pint(stack_t **top, unsigned int num_line);
+void _pop(stack_t **top, unsigned int num_line);
 void _free_stack(stack_t *top);
 
 void error_arg(void);
