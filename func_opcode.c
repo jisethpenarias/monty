@@ -48,14 +48,13 @@ void _pop(stack_t **top, unsigned int num_line)
 	}
 	if (!((*top)->next))
 	{
-		free(*top);
 		*top = NULL;
 		return;
 	}
 	aux = (*top)->next;
 	*top = aux;
 	aux->prev = ((*top)->prev = NULL);
-	free(aux);
+	/*free(aux);*/
 }
 
 /**
@@ -87,7 +86,7 @@ void _pall(stack_t **stack, unsigned int num_line)
 
 void _swap(stack_t **top, unsigned int num_line)
 {
-	stack_t *aux = *top;
+	stack_t *aux;
 
 	if (*top == NULL || (*top)->next == NULL)
 	{
@@ -98,8 +97,11 @@ void _swap(stack_t **top, unsigned int num_line)
 	(*top)->prev = aux;
 	(*top)->next = aux->next;
 	aux->prev = NULL;
+
+	if (aux->next)
+		aux->next->prev = *top;
 	aux->next = *top;
-	*top = aux;
+	(*top) = (*top)->prev;
 }
 
 /**
