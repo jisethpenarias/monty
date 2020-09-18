@@ -21,7 +21,7 @@ void (*st_opcode(char **str, unsigned int nl)) (stack_t **stack, unsigned int)
 		{NULL, NULL}
 	};
 	(void) nl;
-	
+
 	while (instruct_opcode[i].opcode)
 	{
 		if (strcmp(str[0], instruct_opcode[i].opcode) == 0)
@@ -30,6 +30,5 @@ void (*st_opcode(char **str, unsigned int nl)) (stack_t **stack, unsigned int)
 		}
 		i++;
 	}
-	free(str);
 	return (NULL);
 }
