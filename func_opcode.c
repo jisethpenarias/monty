@@ -66,7 +66,7 @@ void _pop(stack_t **top, unsigned int num_line)
 
 void _pall(stack_t **stack, unsigned int num_line)
 {
-	stack_t *auxNode;
+	const stack_t *auxNode;
 	(void)num_line;
 
 	if (stack == NULL)
@@ -75,8 +75,8 @@ void _pall(stack_t **stack, unsigned int num_line)
 	auxNode = *stack;
 	while (auxNode != NULL)
 	{
-		fprintf(stdout, "%d\n", (auxNode)->n);
-		(auxNode) = (auxNode)->next;
+		fprintf(stdout, "%d\n", auxNode->n);
+		auxNode = auxNode->next;
 	}
 }
 

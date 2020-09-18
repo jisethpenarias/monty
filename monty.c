@@ -102,11 +102,12 @@ void exec_opcode_monty(char **argv)
 				continue;
 			}
 			if (strcmp(auxToken, "push") == 0)
+			{
 				commandError = validate_number(eachString[1], num_line);
 				if (commandError == 0)
 					break;
-
-			number = atoi(eachString[1]);
+				number = atoi(eachString[1]);
+			}
 			funct = st_opcode(eachString, num_line);
 			if (!funct)
 			{
