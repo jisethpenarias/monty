@@ -39,7 +39,7 @@ void _push(stack_t **top, unsigned int num_line)
 
 void _pop(stack_t **top, unsigned int num_line)
 {
-	stack_t *aux;
+	stack_t *aux = *top;
 
 	if (!*top)
 	{
@@ -48,13 +48,13 @@ void _pop(stack_t **top, unsigned int num_line)
 	}
 	if (!((*top)->next))
 	{
+		free(aux);
 		*top = NULL;
 		return;
 	}
-	aux = (*top)->next;
-	*top = aux;
-	aux->prev = ((*top)->prev = NULL);
-	/*free(aux);*/
+	*top = (*top)->next;
+	(*top)->prev = NULL;
+	free(aux);
 }
 
 /**
@@ -94,10 +94,9 @@ void _swap(stack_t **top, unsigned int num_line)
 		exit(EXIT_FAILURE);
 	}
 	aux = (*top)->next;
-	(*top)->prev = aux;
+	(*top)->prev = (*top)->next;
 	(*top)->next = aux->next;
 	aux->prev = NULL;
-
 	if (aux->next)
 		aux->next->prev = *top;
 	aux->next = *top;

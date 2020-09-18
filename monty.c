@@ -21,13 +21,32 @@ int have_space(char *line)
 }
 
 /**
+ *validate_free - this function validates characters other than spacesh.
+ *@line: string number.
+ *@top: characters to validate.
+ *@fd: adfadf
+ *@valida_n: dfasdfasdf
+ * Return: 0
+ */
+
+void validate_free(char *line, stack_t *top, FILE *fd, int valida_n)
+{
+fclose(fd);
+	if (line != NULL)
+		free(line);
+	_free_stack(top);
+	if (valida_n == 0)
+		exit(EXIT_FAILURE);
+}
+
+/**
  *validate_number - this function validates characters other than spacesh.
  *@number: string number.
  *@num_line: characters to validate.
  * Return: 0
  */
 
-void validate_number(char *number, unsigned int num_line)
+int validate_number(char *number, unsigned int num_line)
 {
 	unsigned int i, len;
 
@@ -42,8 +61,9 @@ void validate_number(char *number, unsigned int num_line)
 	if (len != i || strcmp(number, "") == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", num_line);
-		exit(EXIT_FAILURE);
+		return (0);
 	}
+	return (1);
 }
 
 /**
@@ -57,7 +77,7 @@ void exec_opcode_monty(char **argv)
 	FILE *fd;
 	char *line = NULL, *eachString[2], auxToken[1000];
 	unsigned int num_line = 1, commandError = 0;
-	int rd = 0;
+	int rd = 0, valida_n = 0;
 	void (*funct)(stack_t **stack, unsigned int num_line);
 	stack_t *top = NULL;
 	size_t len;
@@ -77,8 +97,10 @@ void exec_opcode_monty(char **argv)
 				continue;
 			}
 			if (strcmp(auxToken, "push") == 0)
-				validate_number(eachString[1], num_line), number = atoi(eachString[1]);
-			funct = st_opcode(eachString, num_line);
+				valida_n = validate_number(eachString[1], num_line);
+				if (valida_n == 0)
+					break;
+			number = atoi(eachString[1]), funct = st_opcode(eachString, num_line);
 			if (!funct)
 			{
 				commandError = 1;
@@ -88,10 +110,7 @@ void exec_opcode_monty(char **argv)
 		}
 		num_line++;
 	}
-	fclose(fd);
-	if (line != NULL)
-		free(line);
-	_free_stack(top);
+	validate_free(line, top, fd, valida_n);
 	if (commandError == 1)
 		error_instruction(eachString[0], num_line);
 }
