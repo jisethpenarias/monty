@@ -100,6 +100,7 @@ void exec_opcode_monty(char **argv)
 				valida_n = validate_number(eachString[1], num_line);
 				if (valida_n == 0)
 					break;
+
 			number = atoi(eachString[1]), funct = st_opcode(eachString, num_line);
 			if (!funct)
 			{
