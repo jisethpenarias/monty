@@ -84,7 +84,13 @@ void exec_opcode_monty(char **argv)
 				validate_number(eachString[1], num_line);
 				number = atoi(eachString[1]);
 			}
-			funct = st_opcode(eachString[0], num_line);
+			funct = st_opcode(eachString, num_line);
+			if(!funct)
+			{
+				free(line);
+				_free_stack(top);
+				error_instruction(eachString[0], num_line);
+			}
 			funct(&top, num_line);
 		}
 		num_line++;

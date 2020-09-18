@@ -47,7 +47,7 @@ int number;
 
 void exec_opcode_monty(char **argv);
 void tokenizer(char *entry, char **eachString);
-void (*st_opcode(char *str, unsigned int nl)) (stack_t **stack, unsigned int);
+void (*st_opcode(char **str, unsigned int nl)) (stack_t **stack, unsigned int);
 void _push(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int num_line);

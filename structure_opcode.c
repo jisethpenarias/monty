@@ -7,7 +7,7 @@
  * Return: void.
  */
 
-void (*st_opcode(char *str, unsigned int nl)) (stack_t **stack, unsigned int)
+void (*st_opcode(char **str, unsigned int nl)) (stack_t **stack, unsigned int)
 {
 	int i = 0;
 	instruction_t instruct_opcode[] = {
@@ -20,14 +20,16 @@ void (*st_opcode(char *str, unsigned int nl)) (stack_t **stack, unsigned int)
 		{"add", _add},
 		{NULL, NULL}
 	};
+	(void) nl;
+	
 	while (instruct_opcode[i].opcode)
 	{
-		if (strcmp(str, instruct_opcode[i].opcode) == 0)
+		if (strcmp(str[0], instruct_opcode[i].opcode) == 0)
 		{
 			return (instruct_opcode[i].f);
 		}
 		i++;
 	}
-	error_instruction(str, nl);
+	free(str);
 	return (NULL);
 }
