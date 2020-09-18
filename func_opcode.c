@@ -55,6 +55,7 @@ void _pop(stack_t **top, unsigned int num_line)
 	aux = (*top)->next;
 	*top = aux;
 	aux->prev = ((*top)->prev = NULL);
+	free(aux);
 }
 
 /**
