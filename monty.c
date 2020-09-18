@@ -40,7 +40,7 @@ void validate_free(char *line, stack_t *top, FILE *fd,
 	_free_stack(top);
 	if (commandError == 0)
 		exit(EXIT_FAILURE);
-	if (commandError == 1)
+	if (commandError == 2)
 		error_instruction(command, num_line);
 }
 
@@ -81,8 +81,8 @@ void exec_opcode_monty(char **argv)
 {
 	FILE *fd;
 	char *line = NULL, *eachString[2], auxToken[1000];
-	unsigned int num_line = 1, commandError = 0;
-	int rd = 0;
+	unsigned int num_line = 1;
+	int rd = 0, commandError = 0;
 	void (*funct)(stack_t **stack, unsigned int num_line);
 	stack_t *top = NULL;
 	size_t len;
@@ -106,10 +106,11 @@ void exec_opcode_monty(char **argv)
 				if (commandError == 0)
 					break;
 
-			number = atoi(eachString[1]), funct = st_opcode(eachString, num_line);
+			number = atoi(eachString[1]);
+			funct = st_opcode(eachString, num_line);
 			if (!funct)
 			{
-				commandError = 1;
+				commandError = 2;
 				break;
 			}
 			funct(&top, num_line);
