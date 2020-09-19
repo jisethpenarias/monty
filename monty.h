@@ -55,6 +55,9 @@ void _pint(stack_t **top, unsigned int num_line);
 void _pop(stack_t **top, unsigned int num_line);
 void _add(stack_t **top, unsigned int num_line);
 void _sub(stack_t **top, unsigned int num_line);
+void _div(stack_t **top, unsigned int num_line);
+void _mul(stack_t **top, unsigned int num_line);
+void _mod(stack_t **top, unsigned int num_line);
 void _swap(stack_t **top, unsigned int num_line);
 void _free_stack(stack_t *top);
 
