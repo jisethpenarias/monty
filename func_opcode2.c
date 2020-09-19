@@ -66,3 +66,33 @@ void _free_stack(stack_t *top)
 	}
 	free(top);
 }
+
+/**
+ * _sub - sub the top 2 elements from the top
+ * @top: Double pointer stack.
+ * @num_line: line number.
+ * Return: void.
+ */
+
+void _sub(stack_t **top, unsigned int num_line)
+{
+	stack_t *aux = *top;
+
+	if (*top == NULL || (*top)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't sub, stack too short\n", num_line);
+		exit(EXIT_FAILURE);
+	}
+	if (aux->next)
+	{
+		aux->next->n -= (*top)->n;
+		(*top) = (*top)->next;
+		(*top)->prev = NULL;
+		free(aux);
+	}
+	else
+	{
+		fprintf(stderr, "L%u: can't sub, stack too short\n", num_line);
+		exit(EXIT_FAILURE);
+	}
+}
